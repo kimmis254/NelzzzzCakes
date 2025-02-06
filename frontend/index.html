@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NelzzzCakes</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="../assets/logo.png" type="image/x-icon">
+  <script src="../js/script.js"></script>
+
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="../assets/logo.png" alt="Baker's Delight Logo">
+    <span><a href="index.html">NelzzzCakes</a></span>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#menu">Our Cakes</a>
+
+    <div class="dropdown">
+      <a href="gallery.html" class="dropdown-toggle">Gallery ▾</a>
+      <div class="dropdown-content">
+        <a href="gallery.html#birthday-cakes">Birthday Cakes</a>
+        <a href="gallery.html#graduation-cakes">Graduation Cakes</a>
+        <a href="gallery.html#corporate-cakes">Anniversary Cakes</a>
+        <a href="gallery.html#cupcakes">Cupcakes</a>
+      </div>
+    </div>
+
+
+    <a href="#order" class="order-btn">Order Now</a>
+  </nav>
+
+</header>
+
+<section id="cake-gallery">
+  <div class="gallery-left">
+    <div class="cake-circle rotate" id="cake1">
+      <img src="../assets/Birthday5.jpg" alt="Chocolate Cake">
+    </div>
+    <div class="cake-circle rotate" id="cake2">
+      <img src="../assets/IMG-20250204-WA0042.jpg" alt="Vanilla Oreo Cake">
+    </div>
+    <div class="cake-circle rotate" id="cake3">
+      <img src="../assets/Cupcakes1.jpg" alt="Red Velvet Cake">
+    </div>
+  </div>
+
+  <div class="gallery-right">
+    <h2>Freshly Baked, Always Delicious!</h2>
+    <p>At NelzzzCakes, we craft each cake with the finest ingredients, ensuring every bite is fresh, moist, and bursting with flavor. Our cakes aren't just desserts; they're experiences made with love!</p>
+    <a href="#order" class="order-now-btn">Order Now</a>
+    <a href="gallery.html" class="order-now-btn">View Our Cakes</a>
+  </div>
+</section>
+
+
+
+
+
+<section id="menu">
+  <h2>Our Cakes</h2>
+  <div class="cake-grid">
+    <div class="cake-card">
+      <img src="../assets/mint.png" alt="Chocolate Mint Cake">
+      <h3>Chocolate Mint Cake</h3>
+    </div>
+
+    <div class="cake-card">
+      <img src="../assets/pinacolada.png" alt="Pinacolada Cake">
+      <h3>Pinacolada Cake</h3>
+    </div>
+
+    <div class="cake-card">
+      <img src="../assets/red-velvet.png" alt="Red Velvet Cake">
+      <h3>Red Velvet Cake</h3>
+    </div>
+
+    <div class="cake-card">
+      <img src="../assets/vanilla-oreo.png" alt="Vanilla Oreo Cake">
+      <h3>Vanilla Oreo Cake</h3>
+    </div>
+
+    <div class="cake-card">
+      <img src="../assets/passion.png" alt="Passion Cake">
+      <h3>Passion Cake</h3>
+      <p>$21</p>
+    </div>
+
+    <div class="cake-card">
+      <img src="../assets/chocolate-orange.png" alt="Chocolate Orange Cake">
+      <h3>Chocolate Orange Cake</h3>
+    </div>
+    <div class="cake-card">
+      <img src="../assets/Blueberry.png" alt="Blueberry Cake">
+      <h3>Blueberry Cake</h3>
+    </div>
+  </div>
+
+</section>
+
+
+<section id="order">
+  <h2>Order Now</h2>
+
+  <div id="orderContent">
+  <label for="orderType">What would you like to order?</label>
+  <select id="orderType" required class="order-form">
+    <option value="">-- Select --</option>
+    <option value="cake">Cake</option>
+    <option value="cupcake">Cupcake</option>
+  </select>
+
+  <form id="cakeForm" class="order-form hidden">
+    <h3>Order a Cake</h3>
+
+    <label for="cake">Choose Cake:</label>
+    <select id="cake" required>
+      <option value="chocolate">Chocolate mint</option>
+      <option value="vanilla">Pinacolada</option>
+      <option value="red_velvet">Chocolate Orange</option>
+      <option value="vanilla_oreo">Vanilla Oreo</option>
+      <option value="passion">Passion</option>
+      <option value="chocolate_orange">Blueberry</option>
+      <option value="red-velvet">Red Velvet</option>
+    </select>
+
+    <label for="weight">Select Weight:</label>
+    <select id="weight" required>
+      <option value="1">1 kg - Ksh 2500</option>
+      <option value="1.5">1.5 kg - Ksh 3700</option>
+      <option value="2">2 kg - Ksh 4900</option>
+      <option value="2.5">2.5 kg - Ksh 6100</option>
+      <option value="3">3 kg - Ksh 7300</option>
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" min="1" value="1" required>
+
+    <label for="color">Preferred Cake Color:</label>
+    <input type="text" id="color" placeholder="e.g., Pink, Blue, White" required>
+
+    <label for="design">Design/Edible Print Description:</label>
+    <input type="text" id="design" placeholder="Describe the design or print" required>
+
+    <label for="designFile">Attach an Image (optional):</label>
+    <input type="file" id="designFile" accept="image/*">
+
+    <label for="designLink">Or Provide a Design Link (optional):</label>
+    <input type="url" id="designLink" placeholder="Paste a design link (optional)">
+
+    <label for="inscriptionColor">Inscription Color:</label>
+    <input type="text" id="inscriptionColor" placeholder="e.g., Red, Gold, Silver" required>
+
+    <label for="instructions">Additional Instructions:</label>
+    <textarea id="instructions" rows="3" placeholder="Any specific requests..."></textarea>
+
+    <button type="submit">Place Cake Order</button>
+  </form>
+
+  <form id="cupcakeForm" class="order-form hidden">
+    <h3>Order Cupcakes</h3>
+
+    <label for="cupcakeFlavor">Choose Flavor:</label>
+    <select id="cupcakeFlavor" required>
+      <option value="vanilla">Vanilla</option>
+      <option value="chocolate">Chocolate</option>
+      <option value="red_velvet">Red Velvet</option>
+      <option value="passion">Lemon</option>
+    </select>
+
+    <label for="cupcakeQuantity">Quantity:</label>
+    <select id="cupcakeQuantity" required>
+      <option value="6">6 Cupcakes - Ksh 700</option>
+      <option value="12">12 Cupcakes - Ksh 1400</option>
+    </select>
+
+
+    <label for="icingColor">Preferred Icing Color:</label>
+    <input type="text" id="icingColor" placeholder="e.g., Pink, Blue, White" required>
+
+    <label for="toppings">Toppings (optional):</label>
+    <input type="text" id="toppings" placeholder="e.g., Sprinkles, Choco Chips">
+
+    <label for="cupcakeInstructions">Additional Instructions:</label>
+    <textarea id="cupcakeInstructions" rows="3" placeholder="Any specific requests..."></textarea>
+
+    <button type="submit">Place Cupcake Order</button>
+  </form>
+  </div>
+</section>
+
+
+
+
+
+<footer id="footer">
+  <div class="footer-container">
+
+    <div class="footer-column">
+      <h3>Information</h3>
+      <ul>
+        <li><a href="#about">Who We Are</a></li>
+        <li><a href="#privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>Our Cakes</h3>
+      <ul>
+        <li>Chocolate</li>
+        <li>Vanilla</li>
+        <li>Red Velvet</li>
+        <li>Vanilla Oreo</li>
+        <li>Passion</li>
+        <li>Chocolate Orange</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+      <p>Location: Nyayo Estate Gate D, Nairobi, Kenya</p>
+      <p>Phone: <a href="tel:+254705426995">+254 705 426 995</a></p>
+      <p>Email: <a href="mailto:nelakathanzu@gmail.com">nelakathanzu@gmail.com</a></p>
+    </div>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com" target="_blank" class="social instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com" target="_blank" class="social facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.twitter.com" target="_blank" class="social twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; 2024 NelzzzCakes. All Rights Reserved.</p>
+  </div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const orderType = document.getElementById('orderType');
+    const cakeForm = document.getElementById('cakeForm');
+    const cupcakeForm = document.getElementById('cupcakeForm');
+
+    orderType.addEventListener('change', function () {
+      cakeForm.classList.add('hidden');
+      cupcakeForm.classList.add('hidden');
+
+      if (this.value === 'cake') {
+        cakeForm.classList.remove('hidden');
+      } else if (this.value === 'cupcake') {
+        cupcakeForm.classList.remove('hidden');
+      }
+    });
+
+    // ✅ Event delegation for both forms
+    document.addEventListener("submit", async function (event) {
+      if (event.target.matches("#cakeForm") || event.target.matches("#cupcakeForm")) {
+        event.preventDefault();
+
+        let activeForm = event.target;
+        let orderTypeValue = orderType.value;
+
+        let formData = {};
+
+        if (orderTypeValue === "cake") {
+          formData = {
+            order_type: "cake",
+            flavor: document.getElementById("cake").value,
+            quantity: parseInt(document.getElementById("quantity").value),
+            price: parseFloat(document.getElementById("weight").selectedOptions[0].text.split('- Ksh ')[1]),
+            color: document.getElementById("color").value,
+            design: document.getElementById("design").value,
+            inscription_color: document.getElementById("inscriptionColor").value,
+            additional_info: document.getElementById("instructions").value || "",
+          };
+        } else if (orderTypeValue === "cupcake") {
+          formData = {
+            order_type: "cupcake",
+            flavor: document.getElementById("cupcakeFlavor").value,
+            quantity: parseInt(document.getElementById("cupcakeQuantity").value),
+            price: parseFloat(document.getElementById("cupcakeQuantity").selectedOptions[0].text.split('- Ksh ')[1]),
+            icing_color: document.getElementById("icingColor").value,
+            toppings: document.getElementById("toppings").value || "",
+            additional_info: document.getElementById("cupcakeInstructions").value || "",
+          };
+        }
+
+        try {
+          let response = await fetch("http://127.0.0.1:5000/create-order", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+          });
+
+          let data = await response.json();
+          if (response.ok) {
+            alert("Order placed successfully!");
+
+            // ✅ Save order data in localStorage
+            localStorage.setItem("orderData", JSON.stringify(formData));
+
+            // ✅ Redirect to checkout page
+            window.location.href = "checkout.html";
+          } else {
+            alert("Error placing order. Try again.");
+          }
+        } catch (error) {
+          alert("Network error. Please check your connection.");
+        }
+      }
+    });
+  });
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - NelzzzCakes</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../assets/logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+</head>
+<body>
+
+<!-- Header (Same as Main Page) -->
+<header>
+  <div class="logo">
+    <img src="../assets/logo.png" alt="Baker's Delight Logo">
+    <span><a href="index.html">NelzzzCakes</a></span>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#menu">Our Cakes</a>
+    <div class="dropdown">
+      <a href="gallery.html" class="dropdown-toggle">Gallery ▾</a>
+      <div class="dropdown-content">
+        <a href="gallery.html#birthday-cakes">Birthday Cakes</a>
+        <a href="gallery.html#graduation-cakes">Graduation Cakes</a>
+        <a href="gallery.html#corporate-cakes">Anniversary Cakes</a>
+        <a href="gallery.html#cupcakes">Cupcakes</a>
+
+      </div>
+    </div>
+    <a href="index.html#order" class="order-btn">Order Now</a>
+  </nav>
+</header>
+
+<!-- Checkout Section -->
+<section id="checkout">
+
+  <h2>Checkout</h2>
+
+  <!-- Delivery Section -->
+  <!-- Delivery Section -->
+  <div class="checkout-section">
+    <h3>Delivery Options</h3>
+    <label for="deliveryMethod">Choose Delivery Method:</label>
+    <select id="deliveryMethod">
+      <option value="delivery">Delivery</option>
+      <option value="pickup">Pickup</option>
+    </select>
+
+    <!-- Delivery Address (Shown Only for Delivery) -->
+    <div id="deliveryAddress">
+      <label for="address">Enter Delivery Address:</label>
+      <input type="text" id="address" placeholder="Enter your address">
+    </div>
+
+    <!-- Pickup Location (Shown Only for Pickup) -->
+    <div id="pickupLocation" class="hidden">
+      <h4>Pickup Location:</h4>
+      <iframe
+        id="mapFrame"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.148056875914!2d36.9076359!3d-1.3031475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f13aac13e2b25%3A0x4ec55df0a1d6029f!2sNyayo%20Estate%20Gate%20D!5e0!3m2!1sen!2ske!4v1706989628804!5m2!1sen!2ske"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+    <!-- Date & Time -->
+    <label for="deliveryDate">Date:</label>
+    <input type="date" id="deliveryDate" required>
+
+    <label for="deliveryTime">Time:</label>
+    <input type="time" id="deliveryTime" required>
+  </div>
+
+  <!-- Customer Details Section -->
+  <div class="checkout-section">
+    <h3>Customer Details</h3>
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" placeholder="John Doe" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="example@email.com" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" placeholder="+1234567890" required>
+  </div>
+
+  <!-- Order Summary Section -->
+  <div class="checkout-section">
+    <h3>Order Summary</h3>
+    <div id="orderSummary"></div>
+  </div>
+
+  <!-- Confirm Order Button -->
+  <button id="confirmOrder">Confirm Order</button>
+</section>
+<footer id="footer">
+  <div class="footer-container">
+
+    <!-- Column 1: Information -->
+    <div class="footer-column">
+      <h3>Information</h3>
+      <ul>
+        <li><a href="#about">Who We Are</a></li>
+        <li><a href="#privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 2: Our Cakes -->
+    <div class="footer-column">
+      <h3>Our Cakes</h3>
+      <ul>
+        <li>Chocolate</li>
+        <li>Vanilla</li>
+        <li>Red Velvet</li>
+        <li>Vanilla Oreo</li>
+        <li>Passion</li>
+        <li>Chocolate Orange</li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Contact Us -->
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+      <p>Location: Nyayo Estate Gate D, Nairobi, Kenya</p>
+      <p>Phone: <a href="tel:+254705426995">+254 705 426 995</a></p>
+      <p>Email: <a href="mailto:nelakathanzu@gmail.com">nelakathanzu@gmail.com</a></p>
+    </div>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com" target="_blank" class="social instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com" target="_blank" class="social facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.twitter.com" target="_blank" class="social twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; 2024 NelzzzCakes. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let orderData = JSON.parse(localStorage.getItem("orderData"));
+
+    if (orderData) {
+      document.getElementById("orderSummary").innerHTML = `
+            <p><strong>Type:</strong> ${orderData.order_type}</p>
+            <p><strong>Flavor:</strong> ${orderData.flavor}</p>
+            <p><strong>Quantity:</strong> ${orderData.quantity}</p>
+            <p><strong>Price:</strong> Ksh ${orderData.price}</p>
+            ${orderData.color ? `<p><strong>Color:</strong> ${orderData.color}</p>` : ""}
+            ${orderData.design ? `<p><strong>Design:</strong> ${orderData.design}</p>` : ""}
+            ${orderData.inscription_color ? `<p><strong>Inscription Color:</strong> ${orderData.inscription_color}</p>` : ""}
+            ${orderData.icing_color ? `<p><strong>Icing Color:</strong> ${orderData.icing_color}</p>` : ""}
+            ${orderData.toppings ? `<p><strong>Toppings:</strong> ${orderData.toppings}</p>` : ""}
+            <p><strong>Additional Instructions:</strong> ${orderData.additional_info || "None"}</p>
+        `;
+    } else {
+      document.getElementById("orderSummary").innerHTML = "<p>No order found.</p>";
+    }
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+    const deliveryMethod = document.getElementById("deliveryMethod");
+    const deliveryAddress = document.getElementById("deliveryAddress");
+    const pickupLocation = document.getElementById("pickupLocation");
+
+    // Handle Dropdown Change
+    deliveryMethod.addEventListener("change", function () {
+      if (this.value === "delivery") {
+        deliveryAddress.classList.remove("hidden");
+        pickupLocation.classList.add("hidden");
+      } else {
+        deliveryAddress.classList.add("hidden");
+        pickupLocation.classList.remove("hidden");
+      }
+    });
+  });
+
+</script>
+
+</body>
+</html>

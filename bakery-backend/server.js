@@ -13,16 +13,14 @@ app.use(bodyParser.json());
 
 const FILE_PATH = "orders.xlsx";
 
-// Email Configuration
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "wk.kathanzu@gmail.com", // Replace with your bakery's email
-    pass: "Waynekim254", // Replace with the actual email password (or use an app password)
+    user: "wk.kathanzu@gmail.com",
+    pass: "opno pvbc mtho qccc", // 🔥 Use an App Password, NOT your real password
   },
 });
 
-// Function to save data to Excel
 const saveToExcel = (order) => {
   let workbook;
   if (fs.existsSync(FILE_PATH)) {
@@ -46,61 +44,56 @@ const saveToExcel = (order) => {
   xlsx.writeFile(workbook, FILE_PATH);
 };
 
-// Function to send email
 const sendEmail = (order) => {
   const mailOptions = {
-    from: "yourbakeryemail@gmail.com",
-    to: "bakeryowner@gmail.com", // Change to the owner's email
-    subject: "New Cake Order Received",
+    from: "wk.kathanzu@gmail.com",
+    to: "kathanzuwayne2@gmail.com",
+    subject: "New Order Received! 🎂",
     text: `A new order has been placed:\n\n${JSON.stringify(order, null, 2)}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error("Error sending email:", error);
+      console.error("❌ Error sending email:", error);
     } else {
-      console.log("Email sent successfully:", info.response);
+      console.log("✅ Email sent successfully:", info.response);
     }
   });
 };
 
 app.post("/create-order", (req, res) => {
-  const {
-    order_type,
-    flavor,
-    quantity,
-    price,
-    color,
-    design,
-    inscription_color,
-    icing_color,
-    toppings,
-    additional_info
-  } = req.body;
+  try {
+    console.log("🔹 Request Received:", req.body);
 
-  if (!order_type || !flavor || !quantity || !price) {
-    return res.status(400).json({ error: "Missing required fields" });
+    const newOrder = {
+      "Order Type": req.body.order_type,
+      "Flavor": req.body.flavor,
+      "Quantity": req.body.quantity,
+      "Price (Ksh)": req.body.price,
+      "Color": req.body.color || "N/A",
+      "Design": req.body.design || "N/A",
+      "Inscription Color": req.body.inscription_color || "N/A",
+      "Icing Color": req.body.icing_color || "N/A",
+      "Toppings": req.body.toppings || "N/A",
+      "Additional Info": req.body.additional_info || "None",
+      "Customer Name": req.body.name,
+      "Customer Email": req.body.email,
+      "Customer Phone": req.body.phone,
+      "Delivery Method": req.body.deliveryMethod,
+      "Delivery Address": req.body.deliveryAddress,
+      "Delivery Date": req.body.deliveryDate,
+      "Delivery Time": req.body.deliveryTime
+    };
+
+    saveToExcel(newOrder);
+    sendEmail(newOrder);
+
+    res.status(201).json({ message: "✅ Order saved & email sent!" });
+
+  } catch (error) {
+    console.error("❌ Server error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
-
-  const newOrder = {
-    "Order Type": order_type,
-    "Flavor": flavor,
-    "Quantity": quantity,
-    "Price (Ksh)": price,
-    "Color": color || "N/A",
-    "Design": design || "N/A",
-    "Inscription Color": inscription_color || "N/A",
-    "Icing Color": icing_color || "N/A",
-    "Toppings": toppings || "N/A",
-    "Additional Info": additional_info || "None",
-    "Order Time": new Date().toLocaleString(),
-  };
-
-  saveToExcel(newOrder);
-  res.status(201).json({ message: "Order saved successfully!" });
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://127.0.0.1:${PORT}`);
-});
+app.listen(PORT, () => console.log(`🚀 Server running at http://127.0.0.1:${PORT}`));
